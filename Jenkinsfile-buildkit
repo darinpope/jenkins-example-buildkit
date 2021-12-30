@@ -19,5 +19,15 @@ pipeline {
         sh 'docker images'
       }
     }
+    stage('build again') {
+      steps {
+        sh 'time docker build --progress=plain -t darinpope/my-app:0.0.1 .'
+      }
+    }
+    stage('images again') {
+      steps {
+        sh 'docker images'
+      }
+    }
   }
 }
