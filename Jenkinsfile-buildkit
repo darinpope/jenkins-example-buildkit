@@ -1,0 +1,23 @@
+pipeline {
+  agent any
+  environment {
+    DOCKER_BUILDKIT=1
+  }
+  stages {
+    stage('cleanup') {
+      steps {
+        sh 'docker system prune --all --volumes --force'
+      }
+    }
+    stage('build') {
+      steps {
+        sh 'time docker build --progress=plain -t darinpope/my-app:0.0.1 .'
+      }
+    }
+    stage('images') {
+      steps {
+        sh 'docker images'
+      }
+    }
+  }
+}
