@@ -21,7 +21,7 @@ pipeline {
     }
     stage('build again') {
       steps {
-        sh 'time docker build --progress=plain -t darinpope/my-app:0.0.1 .'
+        sh 'time docker build --progress=plain -t darinpope/my-app:0.0.2 .'
       }
     }
     stage('images again') {
